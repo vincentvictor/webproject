@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use DB;
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Mailer;
+use App\Mail\MyEmail;
+
 class loginController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -32,4 +36,6 @@ class loginController extends BaseController
     	}
     	
     }
+
+ 
 }

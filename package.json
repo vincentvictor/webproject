@@ -9,11 +9,15 @@
   },
   "devDependencies": {
     "axios": "^0.15.3",
+    "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^3.2.3",
+    "gulp": "https://registry.npmjs.org/gulp/-/gulp-3.9.1.tgz",
     "jquery": "^3.1.1",
+    "laravel-elixir": "^6.0.0-15",
     "laravel-mix": "^0.8.3",
     "lodash": "^4.17.4",
+    "vis": "^4.19.1",
     "vue": "^2.1.10"
-  }
+  },
 }

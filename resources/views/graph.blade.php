@@ -7,8 +7,11 @@
 
         <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        {!! Html::script('js/app.js') !!}
+        {!! Html::style('css/app.css') !!}
+        
+        {!! Html::script('js/vis.js') !!}
+        {!! Html::style('css/vis.css') !!}
 
         <!-- Styles -->
         <style>
@@ -62,15 +65,58 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            #mynetwork {
+              width: 800px;
+              height: 600px;
+              border: 1px solid lightgray;
+            }
+
         </style>
+
     </head>
+
+
     <body>
+
+        @include('footer')
+
         <center>
-  
-  HELLO
+        <h1>Coprediction Network</h1>
+        
+        <div id="mynetwork"></div>
 
-            
+        <script type="text/javascript">
+            // Create nodes
+            var nodes_arr = [];
+            for (var i = 0 ; i < nodes_str.length ; i++) {
+                nodes_arr.push({
+                    id: nodes_str[i],
+                    label: nodes_str[i]
+                });
+            }
 
+            // Create edges
+            var edges_arr = [];
+            for (var i = 0 ; i < edges_str.length ; i++) {
+                edges_arr.push({
+                    from: edges_str[i].left_node,
+                    to: edges_str[i].right_node
+                });
+            }
+
+            var nodes = new vis.DataSet(nodes_arr);
+            var edges = new vis.DataSet(edges_arr);
+
+            // create a network
+            var container = document.getElementById('mynetwork');
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+            var options = {};
+            var network = new vis.Network(container, data, options);
+        </script>
 
 
         </center>

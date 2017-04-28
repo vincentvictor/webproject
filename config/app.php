@@ -178,9 +178,14 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * LaravelCollective SSH
+         * LaravelCollective SSH, HTML
          */
         Collective\Remote\RemoteServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        /*
+         * Laracasts 
+         */
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class
 
     ],
 
@@ -211,8 +216,11 @@ return [
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
+        'Form' => Collective\Html\FormFacade::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
+        'Html' => Collective\Html\HtmlFacade::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
+        'JavaScript' => Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,

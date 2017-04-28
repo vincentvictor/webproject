@@ -96,10 +96,11 @@
                 
             </table>
 
+            <!-- 
             @foreach($funels as $funel)
                 <img src="{{ $funel->dataset }}" alt="dataset" width="150" height="150">
             @endforeach
-
+            -->
 
         </center>
     </body>
