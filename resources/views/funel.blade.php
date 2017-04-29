@@ -7,9 +7,6 @@
 
         <title>FuNeL User Interface</title>
 
-        <!-- Fonts 
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> 
-        -->
         {!! Html::style('css/app.css') !!}
         {!! Html::script('js/app.js') !!}
 
@@ -82,8 +79,6 @@
 
         </style>
 
-
-
     </head>
     <body>
         <center>
@@ -121,8 +116,6 @@
                     4. Enter the number of attributes <br/>
                     5. Press Submit button. You will receive a queue number <br/>
                     6. Wait for the results then enter your queue number in Generate a Network page
-
-                
             </div>
             
             <div class="col-md-6">
@@ -208,30 +201,6 @@
             </div>
 
         </div>
-
-
-            <!-- <div class="col-md-5" id="box">
-                <h2>Generate a graph</h2>
-                <br/><br/>
-                <form align="left" action="/generateGraph" method="post" enctype="multipart/form-data">
-                    <div class="col-md-12">
-                        <div class="col-md-4">Job ID:</div>
-                        <div class="col-md-6">
-                            <input type="text" name="job_id"> <br/><br/>
-                        </div>
-                    </div>
-
-                    <div class="col-md-offset-5">
-                        <input type="submit" class="btn btn-primary dropdown-toggle" name="submit" value="Submit">
-                    </div>
-                </form>
- -->
-<!-- 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Submit </button>
-                </div> -->
-    
-
 
     </body>
 </html>

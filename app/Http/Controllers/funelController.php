@@ -42,14 +42,13 @@ class FunelController extends Controller
         // $this->uploadToS3($dataset, $file_name);
         // $isUpload = $this->isUploadSuccessfully($file_name);
 
-        //$job = new SendFunelToQueue($funel, $file_name);
-        //$this->dispatch($job);
+        $job = new SendFunelToQueue($funel, $file_name);
+        $this->dispatch($job);
 
-        //$this->extractJobID($funel);
-        //return view('submit_funel', ['job_id' => $funel->job_id]);
+        $job_id = $this->extractJobID($funel);
+        $funel->updateData($hash, 'job_id', $job_id);
 
-        $job_id = 123456789;
-        return view('submit_funel', ['job_id' => $funel->job_id]);
+        return view('submit_funel', ['job_id' => $job_id ]);
        
     }
 
@@ -94,69 +93,19 @@ class FunelController extends Controller
      */
     public function extractJobID($funel)
     {
-        echo '<br/>';
         while(true) 
         {
             $record = DB::table('funel')->where('hash', '=', $funel->getHash())->first();
             sleep(1);
-            echo $record->job_id.'----- <br/>';
 
             if(!empty($record->job_id)) {
-                echo $record->job_id.'<br/>';;
                 $words = explode(" ", $record->job_id);
                 $job_id = $words[2];
-                echo $job_id;
-                DB::table('funel')->where('hash', $funel->getHash())->update(['job_id' => $job_id]);
-
                 break;
             }
         }
+        return $job_id;
     }
-
-
-        
-        
-        // $outputs = App\OutputModel::all();
-        // foreach ($outputs as $output) {
-        //     echo $output->output_str.'<br/>';
-        // }
-
-        
-        
-        
-        //Save to database
-        /*
-        
-        if(Input::hasFile('dataset')){
-            $file = Input::file('dataset');
-            $file->move(public_path(). '/', $file->getClientOriginalName());
-            $dataset = $file->getClientOriginalName();
-        
-            $data = array('project_name'=>$project_name, 'dataset'=>$dataset, 'configuration'=>$configuration, 'attributes'=>$attributes);
-            DB::table('funel')->insert($data);
-            
-            echo 'success<br />';
-        }
-        */
-
-        
-        // * Laravel Collective
-         
-       //SSH::put($file->getRealPath(), 'input_data/' . $file->getClientOriginalName());
-        /*
-        SSH::get('input_data/' . $file->getClientOriginalName(), storage_path().'/'.$file->getClientOriginalName());
-
-        sleep(10);
-        
-        $run_funel = './run_funel.sh '.$project_name.' '.'~/input_data/'.$file->getClientOriginalName().' '.$configuration.' '.$attributes;
-
-        $commands = array($run_funel);
-
-        SSH::run($commands, function($line)
-        {
-            echo $line.PHP_EOL;
-        });
-        */    
 
     /**
      * Upload a file to Amazon S3 
@@ -181,15 +130,12 @@ class FunelController extends Controller
         $i = 0;
         do {
             $i += 1;
-            echo $i . '<br/>';
             $exists = \Storage::disk('s3')->exists($file_name);
 
         } while($exists == false);
 
         return true;
-    }  
-
-    
+    }   
 
     public function show()
     {

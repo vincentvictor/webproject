@@ -24,52 +24,12 @@
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-
             #mynetwork {
-              width: 800px;
-              height: 600px;
-              border: 1px solid lightgray;
+              width: 100%;
+              height: 550px;
+              border: 2px solid #4682B4;
+              border-radius: 25px;
+             /* border: 1px solid lightgray;*/
             }
 
         </style>
@@ -78,13 +38,44 @@
 
 
     <body>
-
         @include('footer')
-
         <center>
-        <h1>Coprediction Network</h1>
-        
-        <div id="mynetwork"></div>
+            <h1>FuNel User Interface</h1>
+
+            <h3>
+            <a id="showfunel" href="/funel">Run a FuNeL</a> | 
+            <a id="showgraph" href="/funel">Generate a Network</a>
+            </h3>
+        </center>
+        <hr>
+
+        <div class="col-md-9">
+            <div id="mynetwork"></div>
+        </div>
+        <div class="col-md-3">
+            <h3>Co-prediction network</h3>
+            <div class="col-md-12">
+                <h4><b>Project name:</b></h4>
+            </div>
+            <div class="col-md-11 col-md-offset-1">
+                <h4>{{ $project_name }}</h4>
+            </div>
+            <div class="col-md-12">
+                 <h4><b>Configuration:</b></h4>
+            </div>
+            <div class="col-md-11 col-md-offset-1">
+                <h4>C{{ $configuration }}</h4>
+            </div>
+            <div class="col-md-6">
+                <h4><b>Attribute:</b></h4>
+            </div>
+            <div class="col-md-11 col-md-offset-1">
+                <h4>{{ $attribute }} </h4>
+            </div>
+
+         
+
+        </div>
 
         <script type="text/javascript">
             // Create nodes
@@ -108,7 +99,7 @@
             var nodes = new vis.DataSet(nodes_arr);
             var edges = new vis.DataSet(edges_arr);
 
-            // create a network
+            // Create a network
             var container = document.getElementById('mynetwork');
             var data = {
                 nodes: nodes,
@@ -118,7 +109,5 @@
             var network = new vis.Network(container, data, options);
         </script>
 
-
-        </center>
     </body>
 </html>

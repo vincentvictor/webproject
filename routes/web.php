@@ -32,7 +32,7 @@ Route::get('/funel', function () {
 // });
 
 Route::post('/submit_funel', 'FunelController@submit');
-Route::post('/submit_graph', 'graphController@getFile');
+Route::post('/submit_graph', 'graphController@submit');
 
 Route::get('/graph', 'graphController@getFile');
 

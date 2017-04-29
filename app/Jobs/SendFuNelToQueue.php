@@ -60,28 +60,6 @@ class SendFunelToQueue implements ShouldQueue
             $this->job_id = $line.PHP_EOL;
         });
 
-
-        // $s3 = \Storage::disk('s3');
-        // $dataset = $s3->get($this->file_name); 
-
-        // $storagePath  = $s3->url($this->file_name);
-
-        // echo $storagePath;
-        // $path = 'https://s3.eu-west-2.amazonaws.com/funel-webproject/39e951ddbf9e5f5cb292d7b6ff7b725f_lymphoma_dataset.arff';
-
-        // SSH::put($path, 'input_data/'.'test');
-      
-
-        //SSH::put($file->getRealPath(), 'input_data/' . $file->getClientOriginalName());
-      
-        // $commands = array('./run_funel.sh projx ~/input_data/lymphoma_dataset_test.arff 1 100');
-
-        // SSH::run($commands, function($line)
-        // {
-        //     $this->job_id = $line.PHP_EOL;
-        // });
-        echo '================';
-
         echo $this->job_id;
 
         // Save output from the command to database 

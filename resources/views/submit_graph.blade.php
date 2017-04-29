@@ -50,8 +50,9 @@
 
         <div class="col-md-11 col-md-offset-1" id="box" >
             <center>
-            <h3>Your queue number is...</h3>
-            <p style="font-size: 70pt;"> {{ $job_id }} </h1>
+            <h3>Your queue number is <b style="color: #4682B4; font-size: 40pt">{{ $job_id }}</b></h3>
+            <p style="font-size: 70pt;">Please wait...
+            <h1>The program has not finished running yet.</h1>
             </center>
              
         </div>

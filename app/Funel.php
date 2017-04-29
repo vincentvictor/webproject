@@ -18,8 +18,8 @@ class Funel extends Model
 
     public function __construct($project_name, $configuration, $attribute, $hash, $timestamp)
     {
-    	$this->project_name = $project_name;
-    	$this->configuration = $configuration;
+        $this->project_name = $project_name;
+    	  $this->configuration = $configuration;
         $this->attribute = $attribute;
         $this->hash = $hash;
         $this->timestamp = $timestamp;
@@ -30,7 +30,8 @@ class Funel extends Model
      *
      * @return void
      */
-    public function store(){
+    public function store()
+    {
         $data = array('project_name' => $this->project_name, 
                       'configuration' => $this->configuration,
                       'attribute' => $this->attribute,
@@ -39,6 +40,11 @@ class Funel extends Model
                       'time' => $this->timestamp
         );
         DB::table($this->table)->insert($data);
+    }
+
+    public function updateData($hash, $field, $data)
+    {
+        DB::table($this->table)->where('hash', $this->hash)->update([$field => $data]);
     }
 
     public function getProjectName()
